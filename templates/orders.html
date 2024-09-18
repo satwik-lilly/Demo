@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="static/orderStyle.css"
+</head>
+<body>
+    <h1>Options</h1>
+    <!-- <form target="/orders" method="post"> -->
+    <form action="/orders" target="/collect" method="post"> 
+        <label for="freppe">Frepe</label>
+        <input type="radio" id="freppe" name="coffee" value="freppe">
+        <br>
+
+        <label for="latte">Latte</label>
+        <input type="radio" id="latte" name="coffee" value="latte">
+        <br>
+
+        <label for="mocha">Mocha</label>
+        <input type="radio" id="mocha" name="coffee" value="mocha"> 
+        <br>
+ 
+        <label for="machhiato">Macchiato</label>
+        <input type="radio" id="macchiato" name="coffee" value="macchiato"> 
+        <br>
+
+        <!-- <button onclick="window.location.href = '/collect'" type="submit">Confirm</button> -->
+        <button type="submit">Confirm</button>
+
+    </form>
+</body>
+</html>
