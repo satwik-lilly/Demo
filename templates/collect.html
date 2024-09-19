@@ -11,11 +11,13 @@
     <h1>Queue</h1>
     <form method="POST" action="/collect">
     {% for order in orders %}
+    {% if (order['available'] == True) %}
+    <b>{{ order['orderId'] }} not ready</b>
+    {% endif %}
     <li>{{ order['orderId'], order['itemName'] }}</li>
-    <button onclick="collect()" name="collect-button" value="{{order['orderId']}}">Collect Item</button>
+    <button name="collect-button" value="{{order['orderId']}}">Collect Item</button>
     {% endfor %}
     </form>
-
     <h1>Need anything more?
     <a href="/orders">Order Now!</a></h1>
 </body>
