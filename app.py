@@ -2,8 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import time
 import threading
-from pyppeteer import launch
-from livereload import Server
+import random
 
 
 app = Flask(__name__)
@@ -43,6 +42,7 @@ def countdown(orderId, t):
 
 # Store timers for active orders
 timers = {}
+options = ['Latte', 'Capuccino', 'Macchiato', 'Frepe', 'Mocha']
 
 @app.route("/home")
 def home():
@@ -51,7 +51,11 @@ def home():
 @app.route("/orders", methods=['POST', 'GET'])
 def orders():
     if request.method == 'POST':
-        itemName = request.form['coffee']
+        action = request.form.get('action')
+        if action == 'confirm':
+            itemName = request.form['coffee']
+        else:
+             itemName = random.choice(options)
         new_order = Coffee(itemName=itemName, available=False)
 
         # Add to db
@@ -70,7 +74,7 @@ def orders():
 
         return redirect(url_for('collect'))
 
-    return render_template("orders.html")
+    return render_template("orders.html", options=options)
 
 @app.route("/collect", methods=['POST', 'GET'])
 def collect():
@@ -85,7 +89,4 @@ def collect():
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    server = Server(app.wsgi_app)
-    server.watch("templates/*.*")
-    server.serve(debug=True,host='localhost', port=8080)
-    # app.run(debug=True, host='localhost', port=8080)
+    app.run(debug=True, host='localhost', port=8080)

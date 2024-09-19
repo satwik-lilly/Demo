@@ -9,26 +9,17 @@
 <body>
     <h1>Options</h1>
     <h1>Choose your Coffee</h1>
-    <form action="/orders" target="/collect" method="post"> 
-        <label for="freppe">Frepe</label>
-        <input type="radio" id="freppe" name="coffee" value="freppe">
+    <form action="/orders" method="post"> 
+        {% for option in options %}
+        <label for="{{option}}">{{option}}</label>
+        <input type="radio" id="{{option}}" name="coffee" value="{{option}}">
         <br>
-
-        <label for="latte">Latte</label>
-        <input type="radio" id="latte" name="coffee" value="latte">
-        <br>
-
-        <label for="mocha">Mocha</label>
-        <input type="radio" id="mocha" name="coffee" value="mocha"> 
-        <br>
- 
-        <label for="machhiato">Macchiato</label>
-        <input type="radio" id="macchiato" name="coffee" value="macchiato"> 
-        <br>
-
-        <!-- <button onclick="window.location.href = '/collect'" type="submit">Confirm</button> -->
-        <button type="submit">Confirm</button>
-
-    </form>
+        {% endfor %}
+        <button type="submit" name="action" value="surprise">Surprise Me!</button>
+    <button type="submit" name="action" value="confirm">Confirm</button>
+</form>
+<span>
+<button onclick="window.location.href = '/collect'">View Orders</button>
+</span>
 </body>
 </html>

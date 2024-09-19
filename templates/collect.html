@@ -17,10 +17,13 @@
         <button name="collect-button" value="{{order['orderId']}}">Collect Item</button>
         {% else %}
         <li id="not-ready">{{ order['orderId'], order['itemName'] }}</li>
+        <b>Whirrrrrr....</b>
         {% endif %}
     {% endfor %}
     </form>
-    <h1>Need anything more?
-    <a href="/orders">Order Now!</a></h1>
+    <h1>Need anything more?</h1>
+    <span>
+        <button onclick="window.location.href = '/orders'">Order Now!</button>
+    </span>
 </body>
 </html>
