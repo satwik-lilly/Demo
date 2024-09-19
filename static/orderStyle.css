@@ -2,13 +2,13 @@
 body {
     margin: 0;
     font-family: 'Roboto', sans-serif; /* Material Design font */
-    background-color: #f5f5f5; /* Light grey background */
+    background-color: #e3f2fd; /* Light blue background */
     color: #212121; /* Dark grey text color */
 }
 
 h1 {
     text-align: center;
-    color: #333; /* Slightly lighter grey */
+    color: #0d47a1; /* Darker blue for headings */
     margin-top: 20px;
     font-size: 2.5rem; /* Larger font size for headers */
     font-weight: 500; /* Medium weight */
@@ -27,7 +27,7 @@ label {
     display: block;
     margin: 8px 0 4px;
     font-weight: 500; /* Medium weight */
-    color: #333; /* Dark grey for labels */
+    color: #0d47a1; /* Darker blue for labels */
 }
 
 input[type="radio"] {
@@ -39,7 +39,7 @@ button {
     width: 100%;
     padding: 12px;
     margin-top: 16px;
-    background-color: #6200ea; /* Primary Material Design color */
+    background-color: #1976d2; /* Primary blue color */
     color: #ffffff; /* White text */
     border: none;
     border-radius: 4px; /* Rounded corners */
@@ -50,7 +50,7 @@ button {
 }
 
 button:hover {
-    background-color: #3700b3; /* Darker shade for hover effect */
+    background-color: #1565c0; /* Darker shade for hover effect */
 }
 
 ul {
@@ -65,4 +65,12 @@ li {
     padding: 16px;
     border-radius: 4px; /* Rounded corners */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+#ready {
+    background-color: #4caf50; /* Green for ready status */
+}
+
+#not-ready {
+    background-color: #f44336; /* Red for not ready status */
 }

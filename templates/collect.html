@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="static/orderStyle.css"
+    <link rel="stylesheet" href="static/orderStyle.css">
+    <meta http-equiv="refresh" content="5">
 </head>
 <body>
    <h1>Collect Here</h1> 
     <h1>Queue</h1>
     <form method="POST" action="/collect">
     {% for order in orders %}
-    {% if (order['available'] == True) %}
-    <b>{{ order['orderId'] }} not ready</b>
-    {% endif %}
-    <li>{{ order['orderId'], order['itemName'] }}</li>
-    <button name="collect-button" value="{{order['orderId']}}">Collect Item</button>
+        {% if (order['available'] == True) %}
+        <li id="ready">{{ order['orderId'], order['itemName'] }}</li>
+        <button name="collect-button" value="{{order['orderId']}}">Collect Item</button>
+        {% else %}
+        <li id="not-ready">{{ order['orderId'], order['itemName'] }}</li>
+        {% endif %}
     {% endfor %}
     </form>
     <h1>Need anything more?

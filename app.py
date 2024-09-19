@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import time
 import threading
+from pyppeteer import launch
+from livereload import Server
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///coffee.db"
@@ -26,12 +29,15 @@ def countdown(orderId, t):
     try:    
         with app.app_context():
         # Mark the order as available after the countdown
-            order = db.session.execute(db.select(Coffee).filter_by(orderId=orderId)).scalars()
-            print(order)
+            # order = db.session.execute(db.select(Coffee).filter_by(orderId=orderId)).scalars().first()
+            order = Coffee.query.filter_by(orderId=orderId).first()
+            # print(order)
             if order is not None:
                     order.available = True
                     db.session.commit()
-            print(f"Order {orderId} is now available!")
+            # db.session.execute(update(Coffee).where(orderId==orderId).values(available=True))
+            # db.session.commit()
+        print(f"Order {orderId} is now available!")
     except Exception as e:
                 print(e)
 
@@ -79,4 +85,7 @@ def collect():
 if __name__ == "__main__":
     with app.app_context():
         db.create_all()
-    app.run(debug=True, host='localhost', port=8080)
+    server = Server(app.wsgi_app)
+    server.watch("templates/*.*")
+    server.serve(debug=True,host='localhost', port=8080)
+    # app.run(debug=True, host='localhost', port=8080)
