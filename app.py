@@ -44,7 +44,7 @@ def countdown(orderId, t):
 timers = {}
 options = ['Latte', 'Capuccino', 'Macchiato', 'Frepe', 'Mocha']
 
-@app.route("/home")
+@app.route("/")
 def home():
     return render_template("home.html")
 
