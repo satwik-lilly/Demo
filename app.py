@@ -3,10 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 import time
 import threading
 import random
-
+import pymysql
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///coffee.db"
+# app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///coffee.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://satwik:password@localhost:3306/coffee'
 db = SQLAlchemy(app)
 
 class Coffee(db.Model):
