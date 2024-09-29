@@ -3,7 +3,7 @@
 ## INTRODUCTION
 It’s time for a challenge!
 
-You’re working with a team of data scientists that are just starting out with GitHub Actions.
+You’re working with a team of data scientists that are just starting out with GitHub Actions
 
 The team wants to add a continuous integration workflow to their GitHub repo so that all pushes to the main branch are linted using Flake8 and all tests are run using Pytest.
 
